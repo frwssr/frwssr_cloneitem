@@ -6,7 +6,6 @@ function process(path, renamefield, renamepostfix) {
     querystring = form.action.split('?')[1];
 
     form.action = path + 'frwssr_cloneitem.php?' + querystring + renamefield + renamepostfix;
-    // form.target = '_blank';
 }
 document.querySelector('.frwssr_cloneitem__button').onclick = function() {
     process(this.dataset.path, this.dataset.renamefield, this.dataset.renamepostfix);
