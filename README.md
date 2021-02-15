@@ -1,5 +1,5 @@
 # FEUERWASSER CloneItem (frwssr_cloneitem)
-Field type to clone an item in a multi-item region.
+Field type to clone an item in a multi-item region in [PerchCMS](https://grabaperch.com/).
 
 ## Installation
 
