@@ -25,18 +25,18 @@ In a perch template, you can use this field type as follows:
 
 ### Notes
 - Use `suppress` on the `frwssr_cloneitem` field to make sure it doesn’t show up in your website (if the same template is used to render the content).
-- If you are creating a slug of any field in the template, the cloned item will hold the exact same slug value. You need to update that manually. (Unfortunately, there is no way to automate this.)
+- If you are creating a slug of any field in the template, the slug field in the cloned item will hold the exact same value. You need to update that manually. (Unfortunately, there is no way to automate this.)
 
 
 # License
-This project is free, open source, and GPL friendly. You can use it for commercial projects, open source projects, or really almost whatever you want.
+This project is free, open source, and GPL friendly. You can use it for commercial projects, for open source projects, or for almost whatever you want, really.
 
 # Donations
-This is free software, but it took some time to develop. If you use it, please let me know—I live off of positive feedback.
-If you appreciate the fieldtype and use it regularly, feel free to [buy me a cuppa](https://paypal.me/nlsmlk).
+This is free software, but it took some time to develop. If you use it, please let me know—I live off of positive feedback…and chocolate.
+If you appreciate the fieldtype and use it regularly, feel free to [buy me some sweets](https://paypal.me/nlsmlk).
 
 # Issues
 Create a GitHub Issue: https://github.com/frwssr/frwssr_cloneitem/issues or better yet become a contributor.
 
 Developer
-FEUERWASSER: Nils Mielke, nils.m@feuerwasser.de, [@nilsmielke](https://twitter.com/nilsmielke).
+Nils Mielke (nils.m@feuerwasser.de, [@nilsmielke](https://twitter.com/nilsmielke)) of [FEUERWASSER](https://www.feuerwasser.de)
