@@ -38,5 +38,4 @@ If you appreciate the fieldtype and use it regularly, feel free to [buy me some 
 # Issues
 Create a GitHub Issue: https://github.com/frwssr/frwssr_cloneitem/issues or better yet become a contributor.
 
-Developer
-Nils Mielke (nils.m@feuerwasser.de, [@nilsmielke](https://twitter.com/nilsmielke)) of [FEUERWASSER](https://www.feuerwasser.de)
+Developer: Nils Mielke (nils.m@feuerwasser.de, [@nilsmielke](https://twitter.com/nilsmielke)) of [FEUERWASSER](https://www.feuerwasser.de)
