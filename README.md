@@ -28,7 +28,7 @@ In a perch template, you can use this field type as follows:
 - Use `suppress` on the `frwssr_cloneitem` field to make sure it doesn’t show up in your website (if the same template is used to render the content).
 - The occult `_title` field of the content item will get the postfix (custom or default) appended, now matter what, to make the cloned item distinguishable from the original in the item list. Even if you do not make use of `renamefield`.
 - If you are creating a slug of any field in the template, the slug field in the cloned item will hold the exact same value as the original. You need to update that manually. (Unfortunately, there is no way to automate this, as you might name the slug field whatever you want.)
-- This fieldtype was developed under Perch (Standard) Version 3.1.7 on a server running PHP . **Use at own risk!**
+- This fieldtype was developed under Perch (Standard) Version 3.1.7 on a server running PHP 7.4.x. **Use at own risk!**
 
 ### Acknowledgement
 I want to thank fellow Percher [Jordin Brown](https://twitter.com/cognetif) for pointing me in the right direction and his enlightening feedback.
