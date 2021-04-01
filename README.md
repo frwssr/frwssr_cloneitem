@@ -20,7 +20,7 @@ In a perch template, you can use this field type as follows:
 - *renamepostfix* - Customize the text appended to the field passed with `renamefield`. Will do nothing, if `renamefield` is not present.  
 Defaults to “ (Copy)”.
 - *unsetfields* - Pass the IDs of one or more fields to be unset—and the (optional) desired unset values—to have them unset/altered. If no value is provided, field will be set to an empty string.  
-Be aware, that commas (`,`) and the pipe character (`|`) cannot be part of an unset value. You can use HTML characters, though, need to have the `html` attribute on the outputting field for it to render as desired.   
+Be aware, that commas (`,`) and the pipe character (`|`) cannot be part of an unset value. You can use HTML characters, though, need to have the `\html` attribute on the outputting field for it to render as desired.   
 Pattern: `id|,id|unset value`.  
 Example: `unsetfields="slug,date,islive|❌"`.
 
