@@ -30,8 +30,12 @@
                  throw new \Exception('There’s a problem with your renamefield ID');
             }
             if (!$renamepostfix = filter_input(INPUT_GET, 'renamepostfix', FILTER_SANITIZE_STRING)) {
-                 throw new \Exception('There’s a problem with your renamepostfix string');
+                throw new \Exception('There’s a problem with your renamepostfix string');
             }
+            if (!$unsetfieldsInput = filter_input(INPUT_GET, 'unsetfields', FILTER_SANITIZE_STRING)) {
+                 throw new \Exception('There’s a problem with your unsetfields');
+            }
+            $unsetfields = explode(',', $unsetfieldsInput);
 
             $DB = PerchDB::fetch();
 
@@ -51,6 +55,7 @@
             foreach($indexData as $key => $value) {
                 $indexData[$key]['indexID'] = NULL;
                 $indexData[$key]['itemID'] = $newMaxItemID;
+
                 if($renamefield && ($value['indexKey'] == $renamefield || $value['indexKey'] == $renamefield . '_raw' || $value['indexKey'] == $renamefield . '_processed')) {
                     $indexData[$key]['indexValue'] = $indexData[$key]['indexValue'] . $renamepostfix;
                 }
@@ -58,17 +63,27 @@
             }
 
 
+            $itemJSON = json_decode($item['itemJSON'], true);
+            // updates itemJSON in item if fields to unset were provided
+            foreach( $unsetfields as $unsetfield) {
+                $unset = explode('|', $unsetfield);
+                $itemJSON[$unset[0]] = $unset[1] ? $unset[1] : '';
+            }
             // updates itemJSON in item if a field to rename was provided
             if($renamefield) {
-                $renameinjson = json_decode($item['itemJSON'], true);
-                foreach( $renameinjson[$renamefield] as $key => $value) {
-                    if($key == 'raw' || $key == 'processed') {
-                        $renameinjson[$renamefield][$key] .=  $renamepostfix;
+                if(is_array($itemJSON[$renamefield])) {
+                    foreach( $itemJSON[$renamefield] as $key => $value) {
+                        if($key == 'raw' || $key == 'processed') {
+                            $itemJSON[$renamefield][$key] .=  $renamepostfix;
+                        }
                     }
+                } else {
+                    $itemJSON[$renamefield] .=  $renamepostfix;
                 }
-                $renameinjson['_title'] .=  $renamepostfix;
-                $item['itemJSON'] = json_encode($renameinjson);
+                $itemJSON['_title'] .= $renamepostfix;
             }
+
+            $item['itemJSON'] = json_encode($itemJSON);
 
             // insert item into perch3_content_items
             $newItem = $itemsFactory->create( $item );

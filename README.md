@@ -16,18 +16,23 @@ In a perch template, you can use this field type as follows:
 ### Attributes
 - *buttontext* - Customize the text on the button. Defaults to “✌️ Clone item ⚠️” (—the emoji trying to signify the *danger zone* character of the button.)
 - *buttonbg* - Customize the background of the button. Defaults to `slategray`. You might get fancy with something like `buttonbg="linear-gradient(to top right, teal, tomato)"`, too. Impress your Perch users!
-- *renamefield* - Pass the id of a heading field (or similar) to alter said field in the clone.
-- *renamepostfix* - Customize the text appended to the field passed with `renamefield`. Will do nothing, if `renamefield` is not present. Defaults to “ (Copy)”.
+- *renamefield* - Pass the ID of a heading field (or similar) to alter said field in the clone.
+- *renamepostfix* - Customize the text appended to the field passed with `renamefield`. Will do nothing, if `renamefield` is not present.  
+Defaults to “ (Copy)”.
+- *unsetfields* - Pass the IDs of one or more fields to be unset—and the (optional) desired unset values—to have them unset/altered. If no value is provided, field will be set to an empty string.  
+Be aware, that commas (`,`) and the pipe character (`|`) cannot be part of an unset value. You can use HTML characters, though, need to have the `html` attribute on the outputting field for it to render as desired.   
+Pattern: `id|,id|unset value`.  
+Example: `unsetfields="slug,date,islive|❌"`.
 
 ### Example
 ```html
-<perch:content id="clone" type="frwssr_cloneitem" buttontext="Make a copy of this awesome item" buttonbg="linear-gradient(to top right, teal, tomato)" renamefield="itemheading" renamepostfix="—copy" suppress>
+<perch:content id="clone" type="frwssr_cloneitem" buttontext="Make a copy of this awesome item" buttonbg="linear-gradient(to top right, teal, tomato)" renamefield="itemheading" renamepostfix="—copy" unsetfields="slug,date,islive|❌" suppress>
 ```
 
 ### Notes
 - Use `suppress` on the `frwssr_cloneitem` field to make sure it doesn’t show up in your website (if the same template is used to render the content).
-- The occult `_title` field of the content item will get the postfix (custom or default) appended, now matter what, to make the cloned item distinguishable from the original in the item list. Even if you do not make use of `renamefield`.
-- If you are creating a slug of any field in the template, the slug field in the cloned item will hold the exact same value as the original. You need to update that manually. (Unfortunately, there is no way to automate this, as you might name the slug field whatever you want.)
+- The occult `_title` field of the content item will get the postfix (custom or default) appended, now matter what, to let you know, you are in the newly cloned content item. Even if you do not make use of `renamefield`. Be aware, that if you do not change the value of the field, that is the basis for `_title`, in the cloned item, the `_title` will change back to its original value, as soon as you save the new content item.
+- If you are creating a slug (or something similar) of any field in the template, make sure to unset that field using the `` attribute, in order to not end up with duplicate slugs.
 - This fieldtype was developed under Perch (Standard) Version 3.1.7 on a server running PHP 7.4.x. **Use at own risk!**
 
 ### Acknowledgement

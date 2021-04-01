@@ -5,6 +5,7 @@
  *
  * @package default
  * @author Nils Mielke, FEUERWASSER
+ * @version v0.1.1 - 2021-04-01
  */
 class PerchFieldType_frwssr_cloneitem extends PerchAPI_FieldType
 {
@@ -19,17 +20,17 @@ class PerchFieldType_frwssr_cloneitem extends PerchAPI_FieldType
     {
         $ftPath = PERCH_LOGINPATH . '/addons/fieldtypes/frwssr_cloneitem/';
         $perch = Perch::fetch();
-        // $perch->add_javascript($ftPath . 'init.js?v=0.1.0');
-        $perch->add_javascript($ftPath . 'init.js?v=' . time());
+        $perch->add_javascript($ftPath . 'init.js?v=0.1.1');
 
 
         $id = $this->Tag->input_id();
         $buttontext = $this->Tag->buttontext() ? $this->Tag->buttontext() : '✌️ Clone item ⚠️';
         $renamefield = $this->Tag->renamefield() ? ' data-renamefield="' . $this->Tag->renamefield() . '"': '';
         $renamepostfix = $this->Tag->renamepostfix() ? ' data-renamepostfix="' . $this->Tag->renamepostfix() . '"' : ' data-renamepostfix=" (Copy)"';
+        $unsetfields = $this->Tag->unsetfields() ? ' data-unsetfields="' . $this->Tag->unsetfields() . '"': '';
         $buttonbg = $this->Tag->buttonbg() ? ' style="background: ' . $this->Tag->buttonbg() . '"' : ' style="background: slategray"';
 
-        $s = $this->Form->text($id, $buttontext, $class='frwssr_cloneitem__button button button-simple', $limit=false, $type='submit', $attributes='readonly data-path="' . $ftPath . '"' . $renamefield . $renamepostfix . $buttonbg);
+        $s = $this->Form->text($id, $buttontext, $class='frwssr_cloneitem__button button button-simple', $limit=false, $type='submit', $attributes='readonly data-path="' . $ftPath . '"' . $renamefield . $renamepostfix . $unsetfields . $buttonbg);
 
         return $s;
     }
