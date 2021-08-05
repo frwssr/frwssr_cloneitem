@@ -26,16 +26,18 @@
             if (!$itm = filter_input(INPUT_GET, 'itm', FILTER_VALIDATE_INT)) {
                 throw new \Exception('No valid item ID passed though POST vars');
             }
-            if (!$renamefield = filter_input(INPUT_GET, 'renamefield', FILTER_SANITIZE_STRING)) {
+            if (isset($_GET['renamefield']) && !$renamefield = filter_input(INPUT_GET, 'renamefield', FILTER_SANITIZE_STRING)) {
                  throw new \Exception('There’s a problem with your renamefield ID');
             }
             if (!$renamepostfix = filter_input(INPUT_GET, 'renamepostfix', FILTER_SANITIZE_STRING)) {
                 throw new \Exception('There’s a problem with your renamepostfix string');
             }
-            if (!$unsetfieldsInput = filter_input(INPUT_GET, 'unsetfields', FILTER_SANITIZE_STRING)) {
+            if (isset($_GET['unsetfields']) && !$unsetfieldsInput = filter_input(INPUT_GET, 'unsetfields', FILTER_SANITIZE_STRING)) {
                  throw new \Exception('There’s a problem with your unsetfields');
             }
-            $unsetfields = explode(',', $unsetfieldsInput);
+            if ($unsetfieldsInput) {
+                $unsetfields = explode(',', $unsetfieldsInput);
+            }
 
             $DB = PerchDB::fetch();
 
@@ -95,7 +97,12 @@
 
         } catch (\Exception $e) {
             //Redirect to an error page, whatever you want if something doesn't work out.
-            PerchUtil::redirect('/404');
+            print '<div style="background-color: tomato; border-bottom: 20px solid teal; border-radius: 5px; color: white; display: inline-block; font-family: sans-serif; margin: 1em; letter-spacing: .025em; line-height: 1.4; max-width: 60ch; padding: .75em 1em;">⚠️';
+            print '<p style="font-weight: bold;">';
+            print $e;
+            print '</p>';
+            print '<p style="font-size: .8em;">Sorry for the fail.<br>Please contact your web developer or—if you are said web developer—raise an issue in the <a href="https://github.com/frwssr/frwssr_cloneitem/issues" target="_blank" rel="noopener noreferrer" style="color: teal;">GitHub repo</a>.<br>Thank you. 🙏</p>';
+            print '</div>';
         }
 
     }

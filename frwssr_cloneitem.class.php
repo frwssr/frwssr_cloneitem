@@ -5,7 +5,7 @@
  *
  * @package default
  * @author Nils Mielke, FEUERWASSER
- * @version v0.1.1 - 2021-04-01
+ * @version v0.1.2 - 2021-08-05
  */
 class PerchFieldType_frwssr_cloneitem extends PerchAPI_FieldType
 {

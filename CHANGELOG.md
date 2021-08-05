@@ -24,3 +24,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## v0.1.1 - 2021-04-01
 ### Added…
 - …ability to define fields, that should be unset, e.g. slug fields, with the property `unsetfields`.
+
+## v0.1.2 - 2021-08-05
+### Fixed…
+- …a bug in `index.php` that would break execution of the cloning process when attributes `renamefield` and/or `unsetfields` were omitted on the input field in the template.
+### Added…
+- …the displaying of an error message on breaking of the cloning process, rather than 404-ing with no indication of what went wrong.
