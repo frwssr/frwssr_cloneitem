@@ -30,3 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - …a bug in `index.php` that would break execution of the cloning process when attributes `renamefield` and/or `unsetfields` were omitted on the input field in the template.
 ### Added…
 - …the displaying of an error message on breaking of the cloning process, rather than 404-ing with no indication of what went wrong.
+
+## v0.1.3 - 2022-05-03
+### Fixed…
+- …that the fieldtype assumed, the Perch folder is actually named `perch`. The Perch folder name is now irrelevant.
+- …the flaw, that the database table prefix was hardcoded (to `perch3_`) in `index.php`. Now `PERCH_DB_PREFIX` gets pulled from `/perch/config/config.php`. Thus, the fieldtype will also be usable in sites that were upgraded from Perch v2 or that use another database table prefix for other reasons.

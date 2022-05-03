@@ -5,7 +5,7 @@
  *
  * @package default
  * @author Nils Mielke, FEUERWASSER
- * @version v0.1.2 - 2021-08-05
+ * @version v0.1.3 - 2022-05-03
  */
 class PerchFieldType_frwssr_cloneitem extends PerchAPI_FieldType
 {
@@ -20,7 +20,7 @@ class PerchFieldType_frwssr_cloneitem extends PerchAPI_FieldType
     {
         $ftPath = PERCH_LOGINPATH . '/addons/fieldtypes/frwssr_cloneitem/';
         $perch = Perch::fetch();
-        $perch->add_javascript($ftPath . 'init.js?v=0.1.1');
+        $perch->add_javascript($ftPath . 'init.js?v=0.1.3');
 
 
         $id = $this->Tag->input_id();
